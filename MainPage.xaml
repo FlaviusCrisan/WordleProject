@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="wordleProject.MainPage"
+             BackgroundColor="#1e1e1e">
+
+    <VerticalStackLayout HorizontalOptions="Center" Padding="0,350,0,0">
+        <Label x:Name="WordleLabel" HorizontalOptions="Center" VerticalOptions="Start">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="W" TextColor="#D1B036" FontSize="150" FontFamily="Helvetica" FontAttributes="Bold" />
+                    <Span Text="O" TextColor="White" FontSize="150" FontFamily="Helvetica" FontAttributes="Bold" />
+                    <Span Text="R" TextColor="#6AAA64" FontSize="150" FontFamily="Helvetica" FontAttributes="Bold" />
+                    <Span Text="D" TextColor="#D1A536" FontSize="150" FontFamily="Helvetica" FontAttributes="Bold" />
+                    <Span Text="L" TextColor="White" FontSize="150" FontFamily="Helvetica" FontAttributes="Bold" />
+                    <Span Text="E" TextColor="#6AAA64" FontSize="150" FontFamily="Helvetica" FontAttributes="Bold" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <HorizontalStackLayout x:Name="LoginLayout" HorizontalOptions="Center" Spacing="10" Margin="0,50,0,0">
+            <Entry x:Name="NameEntry" WidthRequest="350" FontSize="30" Placeholder="Enter your name" 
+                   BackgroundColor="Transparent"
+                   FontFamily="Helvetica"
+                   TextColor="White"
+                   Margin="0,0,0,0" />
+            <Button x:Name="LoginButton" Text="Login" FontSize="30" BackgroundColor="#212121" FontFamily="Helvetica" TextColor="White"
+                    Clicked="OnLoginButtonClicked" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>

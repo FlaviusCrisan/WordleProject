@@ -1,4 +1,4 @@
-﻿namespace wordleProject
+namespace wordleProject
 {
     public partial class App : Application
     {
@@ -7,6 +7,8 @@
             InitializeComponent();
 
             MainPage = new AppShell();
+
+            Microsoft.Maui.Controls.Application.Current.MainPage.Title = "Wordle";
         }
     }
 }

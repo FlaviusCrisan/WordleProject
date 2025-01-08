@@ -1,20 +1,52 @@
-    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<!-- This is the main page for the Wordle game -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="wordleProject.MainPage"
              BackgroundColor="#1e1e1e">
 
+    <!-- Using an AbsoluteLayout for flexible positioning of elements -->
     <AbsoluteLayout>
-        <Label Text="0" FontSize="25" Opacity="0.8" AbsoluteLayout.LayoutBounds="-0.1, 0, AutoSize, AutoSize"
-               AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="False" x:Name="NumberLabel" />
-        <Label Text="🔥" FontSize="25" Opacity="0.8" AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
-               AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="False" x:Name="FireEmoji" />
-        <Button Text="⚙️" FontSize="30" Opacity="0.5" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
-                AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="False" x:Name="GearIcon" />
 
+        <!-- Label for showing the player's streak count, hidden by default -->
+        <Label Text="0" FontSize="25" Opacity="0.8" 
+               AbsoluteLayout.LayoutBounds="0.0, 0.0, AutoSize, AutoSize"
+               AbsoluteLayout.LayoutFlags="PositionProportional" 
+               IsVisible="False" x:Name="StreakLabel" 
+               TextColor="Yellow" FontAttributes="Bold" />
+
+        <!-- Label for displaying the number of games played, hidden by default -->
+        <Label Text="0" FontSize="25" Opacity="0.8" 
+               AbsoluteLayout.LayoutBounds="-0.1, 0, AutoSize, AutoSize"
+               AbsoluteLayout.LayoutFlags="PositionProportional" 
+               IsVisible="False" x:Name="NumberLabel" />
+
+        <!-- A flame emoji to represent the streak visually, hidden by default -->
+        <Label Text="🔥" FontSize="25" Opacity="0.8" 
+               AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
+               AbsoluteLayout.LayoutFlags="PositionProportional" 
+               IsVisible="False" x:Name="FireEmoji" />
+
+        <!-- Settings button (gear icon), currently hidden -->
+        <Button Text="⚙️" FontSize="30" Opacity="0.5" BackgroundColor="Transparent" 
+                AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional" 
+                IsVisible="False" x:Name="GearIcon" Clicked="OnGearIconClicked"/>
+
+        <!-- Save button for saving progress, hidden initially -->
+        <Button x:Name="SaveButton" Text="Save" FontSize="30" BackgroundColor="#212121" FontFamily="Helvetica" TextColor="White"
+                HorizontalOptions="Center" IsVisible="False" 
+                AbsoluteLayout.LayoutBounds="1, 0.1, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Margin="0,0,10,0"
+                Clicked="OnSaveButtonClicked" />
+
+        <!-- Layout for the login screen -->
         <VerticalStackLayout x:Name="LoginLayout" 
                              AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
                              AbsoluteLayout.LayoutFlags="PositionProportional"
                              Spacing="30" IsVisible="True">
+
+            <!-- The Wordle logo with styled text -->
             <Label x:Name="WordleLabel" HorizontalOptions="Center" VerticalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
@@ -28,6 +60,7 @@
                 </Label.FormattedText>
             </Label>
 
+            <!-- Input field for the player's name and a login button -->
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                 <Entry x:Name="NameEntry" WidthRequest="250" FontSize="30" Placeholder="Enter your name" 
                        BackgroundColor="Transparent" HorizontalOptions="Center" 
@@ -37,15 +70,19 @@
             </HorizontalStackLayout>
         </VerticalStackLayout>
 
+        <!-- Layout for the game screen, hidden by default -->
         <VerticalStackLayout x:Name="GameLayout" 
                              AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
                              AbsoluteLayout.LayoutFlags="PositionProportional"
                              Spacing="20" IsVisible="False">
+
+            <!-- Grid for the Wordle board -->
             <Grid x:Name="WordleGrid" RowSpacing="5" ColumnSpacing="5"
                   HorizontalOptions="Center" VerticalOptions="Center"
                   Padding="10" BackgroundColor="#1e1e1e"
                   RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" />
 
+            <!-- Layout for the keyboard below the Wordle board -->
             <VerticalStackLayout x:Name="KeyboardLayout" Spacing="5" HorizontalOptions="Center" Margin="0,70,0,0">
             </VerticalStackLayout>
         </VerticalStackLayout>
